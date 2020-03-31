@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FN] = LAYOUT_4x4(
     RESET,     KC_NO,   KC_NO,    KC_NO,
     KC_SLEP,   RGB_RMOD,   RGB_TOG,    RGB_MOD,
-    KC_NO,   RGB_VAD,   KC_NO,    RGB_VAI,
+    KC_TRNS,   RGB_VAD,   KC_NO,    RGB_VAI,
     EEP_RST,     RGB_HUD,   KC_NO,    RGB_HUI
 ),
 
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,     RGUI(KC_0),     KC_NO,
     KC_NO,   RGUI(KC_7),     RGUI(KC_8),     RGUI(KC_9),
     KC_NO,   RGUI(KC_4),     RGUI(KC_5),     RGUI(KC_6),
-    KC_NO,   RGUI(KC_1),     RGUI(KC_2),     RGUI(KC_3)
+    KC_TRNS,   RGUI(KC_1),     RGUI(KC_2),     RGUI(KC_3)
 )
 };
 
