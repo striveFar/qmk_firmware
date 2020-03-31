@@ -18,59 +18,46 @@
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _BASE,
-    _FN
-};
-
-// Defines the keycodes used by our macros in process_record_user
-enum custom_keycodes {
-    QMKBEST = SAFE_RANGE,
-    QMKURL
+    _FN,
+    _WINDOW
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Base */
-    [_BASE] = LAYOUT(
-        KC_A,    KC_1,    MO(_FN),
-            KC_TAB,   KC_SPC
-    ),
-    [_FN] = LAYOUT(
-        QMKBEST, QMKURL,  _______,
-            RESET,    XXXXXXX
-    )
+
+[_BASE] = LAYOUT_4x4(
+    KC_MUTE,      KC_MPRV,   KC_MPLY,     KC_MNXT,
+    RGUI(KC_INS),       RGUI(KC_PGDN),     RGUI(KC_HOME),     RGUI(KC_PGUP),
+    MO(_FN),       LCTL(LSFT(KC_3)),     LCTL(LSFT(KC_4)),     KC_F14,
+    MO(_WINDOW),     LCTL(LSFT(LALT(KC_Z))),     KC_MYCM,     LCTL(LSFT(LALT(KC_C)))
+),
+
+[_FN] = LAYOUT_4x4(
+    RESET,     KC_NO,   KC_NO,    KC_NO,
+    KC_SLEP,   RGB_RMOD,   RGB_TOG,    RGB_MOD,
+    KC_NO,   RGB_VAD,   KC_NO,    RGB_VAI,
+    EEP_RST,     RGB_HUD,   KC_NO,    RGB_HUI
+),
+
+[_WINDOW] = LAYOUT_4x4(
+    KC_NO,   KC_NO,     RGUI(KC_0),     KC_NO,
+    KC_NO,   RGUI(KC_7),     RGUI(KC_8),     RGUI(KC_9),
+    KC_NO,   RGUI(KC_4),     RGUI(KC_5),     RGUI(KC_6),
+    KC_NO,   RGUI(KC_1),     RGUI(KC_2),     RGUI(KC_3)
+)
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QMKBEST:
-            if (record->event.pressed) {
-                // when keycode QMKBEST is pressed
-                SEND_STRING("QMK is the best thing ever!");
-            } else {
-                // when keycode QMKBEST is released
-            }
-            break;
-        case QMKURL:
-            if (record->event.pressed) {
-                // when keycode QMKURL is pressed
-                SEND_STRING("https://qmk.fm/\n");
-            } else {
-                // when keycode QMKURL is released
-            }
-            break;
+void encoder_update_user(uint8_t index, bool clockwise) {
+  if (index == 0) { /* First encoder */
+    if (clockwise) {
+      tap_code(KC_VOLU);
+    } else {
+      tap_code(KC_VOLD);
     }
-    return true;
+  }
 }
 
-/*
 void matrix_init_user(void) {
-
 }
 
 void matrix_scan_user(void) {
-
 }
-
-bool led_update_user(led_t led_state) {
-    return true;
-}
-*/
