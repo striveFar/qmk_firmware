@@ -68,7 +68,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /*
  * RGB Support
- *
  */
 
 //#define RGB_DI_PIN D5
