@@ -68,7 +68,7 @@ You will need to install Git and Python. It's very likely that you already have 
 
 * Debian / Ubuntu / Devuan: `apt-get install git python3 && python3 -m pip install qmk`
 * Fedora / Red Hat / CentOS: `yum install git python3 && python3 -m pip install qmk`
-* Arch: `pacman -S qmk`
+* Arch: `yay -S qmk` (or use any other AUR Helper)
 
 ## 3. Run QMK Setup :id=set-up-qmk
 
@@ -78,7 +78,7 @@ After installing QMK you can set it up with this command:
 
 In most situations you will want to answer Yes to all of the prompts.
 
-?> If you already know [how to use GitHub](getting_started_github.md), we recommend that you create your own fork and use `qmk setup <github_username>` to clone your personal fork. If you don't know what that means you can safely ignore this message.
+?> If you already know [how to use GitHub](getting_started_github.md), we recommend that you create your own fork and use `qmk setup <github_username>/qmk_firmware` to clone your personal fork. If you don't know what that means you can safely ignore this message.
 
 ## 4. Test Your Build Environment
 
