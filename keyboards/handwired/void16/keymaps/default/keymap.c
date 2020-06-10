@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MUTE,      KC_MPRV,   KC_MPLY,     KC_MNXT,
     RGUI(KC_INS),       RGUI(KC_PGDN),     RGUI(KC_HOME),     RGUI(KC_PGUP),
     MO(_FN),       LCTL(LSFT(KC_3)),     LCTL(LSFT(KC_4)),     KC_F14,
-    MO(_WINDOW),     LCTL(LSFT(LALT(KC_Z))),     KC_MYCM,     LCTL(LSFT(LALT(KC_C)))
+    MO(_WINDOW),     LCTL(LALT(KC_O)),     KC_MYCM,     LCTL(LSFT(LALT(KC_C)))
 ),
 
 [_FN] = LAYOUT_4x4(

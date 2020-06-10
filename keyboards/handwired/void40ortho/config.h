@@ -41,19 +41,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-
-/*
- * Ignore this // modify to match your wiring
- *
- * PINS FOR BSUN BROWN
- * #define MATRIX_ROW_PINS { D3, D2, D1, D0 }
- * #define MATRIX_COL_PINS { D4, C6, D7, E6, B4, B5, F4, F5, F6, F7, B1, B3 }
- *
- *
- *                        1   2   3   4   5   6   7   8   9   10  11  12
- */
-#define MATRIX_ROW_PINS { F6, F7, B1, B3 }
-#define MATRIX_COL_PINS { F5, F4, B5, B4, E6, D7, C6, D4, D0, D1, D2, D3 }
+#define MATRIX_ROW_PINS { D3, D2, D1, D0 }
+#define MATRIX_COL_PINS { D4, C6, D7, E6, B4, B5, F4, F5, F6, F7, B1, B3 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL*/
