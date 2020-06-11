@@ -1,1 +1,1 @@
-# The default keymap for void40
+# Definitely not the default keymap for void40

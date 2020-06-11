@@ -1,1 +1,1 @@
-# The default keymap for void40
+# The default mit keymap for void40

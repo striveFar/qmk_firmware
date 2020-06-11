@@ -1,1 +1,1 @@
-# The default keymap for void40
+# The default grid keymap for void40
