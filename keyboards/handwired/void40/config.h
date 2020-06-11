@@ -43,7 +43,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /*
- * Ignore this // modify to match your wiring
+ * Ignore this / modify to match your wiring
  *
  * PINS FOR BSUN BROWN
  * #define MATRIX_ROW_PINS { D3, D2, D1, D0 }
