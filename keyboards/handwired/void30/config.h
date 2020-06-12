@@ -28,8 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DESCRIPTION A handwired 30% 10x3 ortholinear keyboard
 
 /* key matrix size */
-#define MATRIX_ROWS 2
-#define MATRIX_COLS 3
+#define MATRIX_ROWS 3
+#define MATRIX_COLS 10
 
 /*
  * Keyboard Matrix Assignments
