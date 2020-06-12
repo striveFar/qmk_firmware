@@ -2,7 +2,7 @@
 
 ![VOID40](https://i.imgur.com/1OUBSvn.jpg)
 
-Handwired 40% 12x4 ortholinear keyboard with (or without, to each their own) a rotary encoder.
+A handwired 40% 12x4 ortholinear keyboard with (or without, to each their own) a rotary encoder.
 
 * Keyboard Maintainer: [Victor Lucachi](https://github.com/victorlucachi)
 * Hardware Supported: Pro Micro

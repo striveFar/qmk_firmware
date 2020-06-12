@@ -25,24 +25,24 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_4x4(
-    KC_MUTE,      KC_MPRV,   KC_MPLY,     KC_MNXT,
-    RGUI(KC_INS),       RGUI(KC_PGDN),     RGUI(KC_HOME),     RGUI(KC_PGUP),
-    MO(_FN),       LCTL(LSFT(KC_3)),     LCTL(LSFT(KC_4)),     KC_F14,
-    MO(_WINDOW),     LCTL(LALT(KC_O)),     KC_MYCM,     LCTL(LSFT(LALT(KC_C)))
+    KC_MUTE,        KC_MPRV,            KC_MPLY,            KC_MNXT,
+    RGUI(KC_INS),   RGUI(KC_PGDN),      RGUI(KC_HOME),      RGUI(KC_PGUP),
+    MO(_FN),        LCTL(LSFT(KC_3)),   LCTL(LSFT(KC_4)),   KC_F14,
+    MO(_WINDOW),    LCTL(LALT(KC_O)),   KC_MYCM,            LCTL(LSFT(LALT(KC_C)))
 ),
 
 [_FN] = LAYOUT_4x4(
-    RESET,     AU_TOG,   CK_TOGG,    MU_TOG,
-    KC_SLEP,   RGB_RMOD,   RGB_TOG,    RGB_MOD,
-    KC_TRNS,   RGB_VAD,   KC_NO,    RGB_VAI,
-    EEP_RST,     RGB_HUD,   KC_NO,    RGB_HUI
+    RESET,     AU_TOG,    CK_TOGG,    CK_RST,
+    KC_SLEP,   RGB_RMOD,  RGB_TOG,    RGB_MOD,
+    KC_TRNS,   RGB_VAD,   KC_NO,      RGB_VAI,
+    EEP_RST,   RGB_HUD,   KC_NO,      RGB_HUI
 ),
 
 [_WINDOW] = LAYOUT_4x4(
-    KC_NO,   KC_NO,     RGUI(KC_0),     KC_NO,
-    KC_NO,   RGUI(KC_7),     RGUI(KC_8),     RGUI(KC_9),
-    KC_NO,   RGUI(KC_4),     RGUI(KC_5),     RGUI(KC_6),
-    KC_TRNS,   RGUI(KC_1),     RGUI(KC_2),     RGUI(KC_3)
+    KC_NO,    KC_NO,          RGUI(KC_0),     KC_NO,
+    KC_NO,    RGUI(KC_7),     RGUI(KC_8),     RGUI(KC_9),
+    KC_NO,    RGUI(KC_4),     RGUI(KC_5),     RGUI(KC_6),
+    KC_TRNS,  RGUI(KC_1),     RGUI(KC_2),     RGUI(KC_3)
 )
 };
 

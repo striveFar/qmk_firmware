@@ -1,5 +1,5 @@
 # MCU name
-MCU = atmega328p
+MCU = atmega32u4
 
 # Bootloader selection
 #   Teensy       halfkay
@@ -9,7 +9,7 @@ MCU = atmega328p
 #   QMK DFU      qmk-dfu
 #   ATmega32A    bootloadHID
 #   ATmega328P   USBasp
-BOOTLOADER = USBasp
+BOOTLOADER = caterina
 
 # Build Options
 #   change yes to no to disable

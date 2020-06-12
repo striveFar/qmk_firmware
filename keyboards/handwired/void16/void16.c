@@ -24,6 +24,7 @@ void matrix_init_kb(void) {
     // put your keyboard start-up code here
     // runs once when the firmware starts up
 
+    // disable pro micro LEDs
     DDRD &= ~(1<<5);
     PORTD &= ~(1<<5);
 

@@ -19,13 +19,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
-/* USB Device descriptorb2 parameter */
+/* USB Device descriptor parameter */
 #define VENDOR_ID 0xF055    // VOID
 #define PRODUCT_ID 0x3531   // VOID40
 #define DEVICE_VER 0x0001
 #define MANUFACTURER Victor Lucachi
 #define PRODUCT VOID40
-#define DESCRIPTION Handwired 40% 12x4 ortholinear keyboard
+#define DESCRIPTION A handwired 40% 12x4 ortholinear keyboard
 
 /* key matrix size */
 #define MATRIX_ROWS 4
@@ -43,12 +43,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /*
- * Ignore this / modify to match your wiring
+ * Modify to match your wiring
  *
  * PINS FOR BSUN BROWN
  * #define MATRIX_ROW_PINS { D3, D2, D1, D0 }
  * #define MATRIX_COL_PINS { D4, C6, D7, E6, B4, B5, F4, F5, F6, F7, B1, B3 }
- *
  *
  *                        1   2   3   4   5   6   7   8   9   10  11  12
  */

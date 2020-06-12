@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID 0xF055   // VOID
-#define PRODUCT_ID 0x3532  // VOID16
+#define VENDOR_ID 0xF055    // VOID
+#define PRODUCT_ID 0x3533   // VOID40
 #define DEVICE_VER 0x0001
 #define MANUFACTURER Victor Lucachi
 #define PRODUCT VOID16
-#define DESCRIPTION Handwired 4x4 Macropad with a rotary encoder
+#define DESCRIPTION A handwired 4x4 Macropad with a rotary encoder
 
 /* key matrix size */
 #define MATRIX_ROWS 4
@@ -41,6 +41,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
+
+/*
+ * Modify to match your wiring
+ *
+ *                        1   2   3   4 
+ */
+
 #define MATRIX_ROW_PINS { D3, D2, D1, D0 }
 #define MATRIX_COL_PINS { E6, D7, C6, D4 }
 #define UNUSED_PINS
@@ -48,25 +55,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-/* AUDIO SUPPORT */
+/*
+ * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
+ */
+// #define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
 
-#define B6_AUDIO
+// #define BACKLIGHT_PIN B7
+// #define BACKLIGHT_BREATHING
+// #define BACKLIGHT_LEVELS 3
 
-/* ENCODER SUPPORT */
+/*
+ * Rotary Encoder Support
+ */
 
 #define ENCODERS_PAD_A { F5 }
 #define ENCODERS_PAD_B { F4 }
 
 #define ENCODER_RESOLUTION 4
+#define TAP_CODE_DELAY 10
 
 /*
- * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
+ * Audio Support
  */
-//#define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
 
-// #define BACKLIGHT_PIN B7
-// #define BACKLIGHT_BREATHING
-// #define BACKLIGHT_LEVELS 3
+#define B6_AUDIO
+#define DAC_SAMPLE_MAX 65535U
+#define NO_MUSIC_MODE
+#define AUDIO_CLICKY
+
+/* 
+ * RGB Support
+ */
 
 #define RGB_DI_PIN F7
 #ifdef RGB_DI_PIN
@@ -103,9 +122,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MATRIX_HAS_GHOST
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
+// #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+// #define LOCKING_RESYNC_ENABLE
 
 /* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
  * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
