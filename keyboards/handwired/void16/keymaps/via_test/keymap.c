@@ -18,7 +18,9 @@
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _BASE,
-    _FN,
+    _FN1,
+    _FN2,
+    _FN3
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -31,17 +33,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------|
  * |   1  |   2  |   3  | TAB  |
  * |------+------+------+------|
- * |  FN  |   0  |   .  |ENTER |
+ * |  FN1 |   0  |   .  |ENTER |
  * `---------------------------'
  */
 [_BASE] = LAYOUT_ortho_4x4(
-    KC_P7,    KC_P8,  KC_P9,    KC_BSPC,
-    KC_P4,    KC_P5,  KC_P6,    KC_ESC,
-    KC_P1,    KC_P2,  KC_P3,    KC_TAB,
-    TT(_FN), KC_P0,   KC_PDOT,  KC_ENTER
+    KC_P7,    KC_P8,    KC_P9,    KC_BSPC,
+    KC_P4,    KC_P5,    KC_P6,    KC_ESC,
+    KC_P1,    KC_P2,    KC_P3,    KC_TAB,
+    TT(_FN1), KC_P0,    KC_PDOT,  KC_PENT
 ),
 
-/* FN
+/* FN1
  * ,---------------------------.
  * | RESET|      |      |      |
  * |------+------+------+------|
@@ -52,11 +54,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |   =  |
  * `---------------------------'
  */
-[_FN] = LAYOUT_ortho_4x4(
+[_FN1] = LAYOUT_ortho_4x4(
     RESET,     KC_TRNS,   KC_TRNS,    KC_TRNS,
     KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_PMNS,
     KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_PPLS,
     KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_PEQL
+),
+
+/* FN2
+ * ,---------------------------.
+ * |      |      |      |      |
+ * |------+------+------+------|
+ * |      |      |      |      |
+ * |------+------+------+------|
+ * |      |      |      |      |
+ * |------+------+------+------|
+ * |      |      |      |      |
+ * `---------------------------'
+ */
+[_FN2] = LAYOUT_ortho_4x4(
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS
+),
+
+/* FN3
+ * ,---------------------------.
+ * |      |      |      |      |
+ * |------+------+------+------|
+ * |      |      |      |      |
+ * |------+------+------+------|
+ * |      |      |      |      |
+ * |------+------+------+------|
+ * |      |      |      |      |
+ * `---------------------------'
+ */
+[_FN3] = LAYOUT_ortho_4x4(
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS
 )
 };
 
