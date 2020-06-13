@@ -9,6 +9,8 @@ A handwired 40% 12x4 ortholinear keyboard with (or without, to each their own) a
 
 Make example for this keyboard (after setting up your build environment):
 
-    make handwired/void40:default_grid
+    make handwired/void40:default_mit
+
+![VOID40 Keymap](https://i.imgur.com/xyQFgu5.png)
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
