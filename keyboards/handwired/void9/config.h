@@ -48,8 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                        1   2   3 
  */
 
-#define MATRIX_ROW_PINS { D1, D0, D2 }
-#define MATRIX_COL_PINS { D3, D4, D5 }
+#define MATRIX_ROW_PINS { F4, F5, F6 }
+#define MATRIX_COL_PINS { D1, D0, D4 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL*/
@@ -94,6 +94,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
+
+/* Tap dance max time */
+#define TAPPING_TERM 200
 
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
