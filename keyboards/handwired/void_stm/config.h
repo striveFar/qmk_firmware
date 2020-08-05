@@ -20,16 +20,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID 0xF055    // VOID
-#define PRODUCT_ID 0x3535   // VOID ERGO
+#define VENDOR_ID 0xF055
+#define PRODUCT_ID 0x3536
 #define DEVICE_VER 0x0001
 #define MANUFACTURER Victor Lucachi
-#define PRODUCT VOID ERGO
-#define DESCRIPTION A handwired split keyboard inspired by the Corne
+#define PRODUCT void_stm
+#define DESCRIPTION A custom STM32 keyboard
 
 /* key matrix size */
-#define MATRIX_ROWS 8
-#define MATRIX_COLS 12
+#define MATRIX_ROWS 2
+#define MATRIX_COLS 2
 
 /*
  * Keyboard Matrix Assignments
@@ -41,32 +41,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { B1, B3, B2, B6 }
-#define MATRIX_COL_PINS { D4, C6, D7, E6, B4, B5 }
+#define MATRIX_ROW_PINS { B11, B10 }
+#define MATRIX_COL_PINS { B3, B4 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-/*
- * Rotary Encoder Support
- */
-
-#define ENCODERS_PAD_A { F6 }
-#define ENCODERS_PAD_B { F5 }
-
-#define ENCODERS_PAD_A_RIGHT { F5 }
-#define ENCODERS_PAD_B_RIGHT { F6 }
-
-#define ENCODER_RESOLUTION 4
-#define TAP_CODE_DELAY 10
+// #define B5_AUDIO
 
 /*
  * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
  */
-#define USE_SERIAL
-#define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
-#define SELECT_SOFT_SERIAL_SPEED 0
+// #define SOFT_SERIAL_PIN D0  // or D1, D2, D3, E6
 
 // #define BACKLIGHT_PIN B7
 // #define BACKLIGHT_BREATHING
@@ -107,9 +94,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MATRIX_HAS_GHOST
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-// #define LOCKING_SUPPORT_ENABLE
+#define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
-// #define LOCKING_RESYNC_ENABLE
+#define LOCKING_RESYNC_ENABLE
 
 /* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
  * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
@@ -135,7 +122,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * power-up.
  *
  */
-#define FORCE_NKRO
+//#define FORCE_NKRO
 
 /*
  * Magic Key Options
