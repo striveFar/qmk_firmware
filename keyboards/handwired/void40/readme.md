@@ -2,7 +2,7 @@
 
 ![VOID40](https://i.imgur.com/1OUBSvn.jpg)
 
-A handwired 40% 12x4 ortholinear keyboard with (or without, to each their own) a rotary encoder.
+A 3D printed, handwired, 40% ortholinear keyboard with (or without, to each their own) a rotary encoder. STL files, a bill of materials and more info can be found [here](https://github.com/victorlucachi/void40).
 
 * Keyboard Maintainer: [Victor Lucachi](https://github.com/victorlucachi)
 * Hardware Supported: Pro Micro
