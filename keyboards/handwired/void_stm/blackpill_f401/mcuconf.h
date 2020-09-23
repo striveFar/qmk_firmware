@@ -17,22 +17,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
+#include_next "mcuconf.h"
 
-/* USB Device descriptor parameter */
-#define VENDOR_ID 0xF055    // VOID
-#define PRODUCT_ID 0x3531   // VOID40
-#define DEVICE_VER 0x0001
-#define MANUFACTURER        Victor Lucachi
-#define PRODUCT             VOID40
-#define DESCRIPTION         A handwired 40% 12x4 ortholinear keyboard
+#undef STM32_I2C_USE_I2C1
+#define STM32_I2C_USE_I2C1 TRUE
 
-/* key matrix size */
-#define MATRIX_ROWS 4
-#define MATRIX_COLS 12
-
-/* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
-
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5
+#undef STM32_PWM_USE_TIM5
+#define STM32_PWM_USE_TIM5 TRUE

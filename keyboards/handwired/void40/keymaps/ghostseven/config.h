@@ -1,4 +1,4 @@
-/* Copyright 2020 Victor Lucachi
+/* Copyright 2020 GhostSeven
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,4 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "void_stm.h"
+#pragma once
+
+// place overrides here

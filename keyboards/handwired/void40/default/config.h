@@ -19,20 +19,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
-/* USB Device descriptor parameter */
-#define VENDOR_ID 0xF055    // VOID
-#define PRODUCT_ID 0x3531   // VOID40
-#define DEVICE_VER 0x0001
-#define MANUFACTURER        Victor Lucachi
-#define PRODUCT             VOID40
-#define DESCRIPTION         A handwired 40% 12x4 ortholinear keyboard
+/* Keyboard Matrix Assignments */
+ #define MATRIX_ROW_PINS { D3, D2, D1, D0 }
+ #define MATRIX_COL_PINS { D4, C6, D7, E6, B4, B5, F4, F5, F6, F7, B1, B3 }
+ #define UNUSED_PINS
 
-/* key matrix size */
-#define MATRIX_ROWS 4
-#define MATRIX_COLS 12
+/* Rotary Encoder Support */
+#define ENCODERS_PAD_A { B6 }
+#define ENCODERS_PAD_B { B2 }
+#define ENCODER_RESOLUTION 4
+#define TAP_CODE_DELAY 10
 
-/* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
+/* Force NKRO */
+#define FORCE_NKRO
 
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5
+/* disable these deprecated features by default */
+#ifndef LINK_TIME_OPTIMIZATION_ENABLE
+  #define NO_ACTION_MACRO
+  #define NO_ACTION_FUNCTION
+#endif
+
+#ifndef NO_DEBUG
+#define NO_DEBUG
+#endif // !NO_DEBUG
+#if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
+#define NO_PRINT
+#endif // !NO_PRINT

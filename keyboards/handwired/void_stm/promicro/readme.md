@@ -1,0 +1,4 @@
+# Pro Micro VOID STM
+
+ROW_PINS F6, F7, B1, B3
+COL_PINS F5, F4, B5, B4, E6, D7, C6, D4, D0, D1, D2, D3
