@@ -1,1 +1,1 @@
-# The default keymap for void_ergo
+# The default keymap for the VOID Ergo S

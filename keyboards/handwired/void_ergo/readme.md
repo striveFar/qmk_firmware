@@ -1,15 +1,14 @@
-# void_ergo
+# VOID Ergo S
 
-![void_ergo](imgur.com image replace me!)
+![void_ergo](https://i.imgur.com/aQ571vc.jpg)
 
 A short description of the keyboard/project
 
-* Keyboard Maintainer: [Victor Lucachi](https://github.com/yourusername)
-* Hardware Supported: The PCBs, controllers supported
-* Hardware Availability: Links to where you can find this hardware
+* Keyboard Maintainer: [Victor Lucachi](https://github.com/victorlucachi)
+* Hardware Supported: Pro Micro
 
 Make example for this keyboard (after setting up your build environment):
 
-    make void_ergo:default
+    make handwired/void_ergo/slim:default
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).

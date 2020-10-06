@@ -1,18 +1,5 @@
-# MCU name
-MCU = atmega32u4
-
-# Bootloader selection
-#   Teensy       halfkay
-#   Pro Micro    caterina
-#   Atmel DFU    atmel-dfu
-#   LUFA DFU     lufa-dfu
-#   QMK DFU      qmk-dfu
-#   ATmega32A    bootloadHID
-#   ATmega328P   USBasp
-BOOTLOADER = caterina
-
 # Build Options
-#   change yes to no to disable
+# change yes to no to disable
 #
 BOOTMAGIC_ENABLE = lite     # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = no        # Mouse keys
@@ -35,6 +22,7 @@ ENCODER_ENABLE = yes		# Enable encoders
 OLED_DRIVER_ENABLE = no
 
 # Enable VIA by default
-
 VIA_ENABLE = yes
 LT0_ENABLE = yes
+
+DEFAULT_FOLDER = handwired/void_ergo/fat
