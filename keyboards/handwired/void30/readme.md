@@ -1,6 +1,6 @@
 # VOID30
 
-![VOID30](https://i.imgur.com/3QuBES6.jpg)
+![VOID30](https://i.imgur.com/6EY6A57.jpg)
 
 A handwired 30% 10x3 ortholinear keyboard.
 

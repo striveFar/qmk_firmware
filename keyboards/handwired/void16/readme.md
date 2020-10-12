@@ -1,6 +1,6 @@
 # VOID16
 
-![VOID16](https://i.imgur.com/uzdOciS.jpg)
+![VOID16](https://i.imgur.com/ExFBLPU.jpg)
 
 A handwired 4x4 macropad with a rotary encoder.
 

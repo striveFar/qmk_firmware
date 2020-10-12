@@ -1,6 +1,6 @@
 # VOID9
 
-![VOID9](https://i.imgur.com/i6cVnhc.jpg)
+![VOID9](https://i.imgur.com/Db82OaX.jpg)
 
 A handwired 3x3 macropad.
 
