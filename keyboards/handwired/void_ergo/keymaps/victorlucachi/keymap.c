@@ -59,10 +59,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_ADJUST] = LAYOUT_void_ergo(
-    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS,                  KC_TRNS,    KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS,                  KC_TRNS,    KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_F1,      KC_F2,    KC_F3,    KC_F4,      KC_F5,    KC_F6,                    KC_F7,      KC_F8,    KC_F9,      KC_F10,   KC_F11,   KC_F12,
-                KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,  RESET,                    RESET,      KC_TRNS,  KC_TRNS,    KC_TRNS,  KC_TRNS
+    KC_TRNS,    RGUI(KC_1),   RGUI(KC_2),   RGUI(KC_3),   RGUI(KC_4),   RGUI(KC_5),               RGUI(KC_6), RGUI(KC_7), RGUI(KC_8), RGUI(KC_9), RGUI(KC_0), KC_TRNS,
+    KC_TRNS,    RGUI(KC_INS), RGUI(KC_PGDN),RGUI(KC_HOME),RGUI(KC_PGUP),KC_TRNS,                  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+    KC_F1,      KC_F2,        KC_F3,        KC_F4,        KC_F5,        KC_F6,                    KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
+                KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_TRNS,      RESET,                    RESET,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS
 )
 };
 

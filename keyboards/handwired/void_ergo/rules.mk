@@ -25,4 +25,4 @@ OLED_DRIVER_ENABLE = no
 VIA_ENABLE = yes
 LT0_ENABLE = yes
 
-DEFAULT_FOLDER = handwired/void_ergo/fat
+DEFAULT_FOLDER = handwired/void_ergo/slim
