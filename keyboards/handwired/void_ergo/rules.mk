@@ -22,7 +22,7 @@ ENCODER_ENABLE = yes		# Enable encoders
 OLED_DRIVER_ENABLE = no
 
 # Enable VIA by default
-VIA_ENABLE = yes
+VIA_ENABLE = no
 LT0_ENABLE = yes
 
 DEFAULT_FOLDER = handwired/void_ergo/slim
