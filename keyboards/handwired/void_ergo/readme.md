@@ -1,6 +1,6 @@
 # VOID Ergo S
 
-![void_ergo](https://i.imgur.com/aQ571vc.jpg)
+![void_ergo](https://imgur.com/CCHC45y)
 
 A short description of the keyboard/project
 
