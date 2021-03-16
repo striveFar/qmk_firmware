@@ -1,1 +1,1 @@
-# The default keymap for the VOID Ergo S
+# The hannes keymap for the VOID Ergo S
