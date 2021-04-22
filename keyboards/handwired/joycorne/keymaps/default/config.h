@@ -15,3 +15,6 @@
  */
 
 #pragma once
+
+#define THUMBSTICK_DEBUG
+#define THUMBSTICK_MODE_MOUSE

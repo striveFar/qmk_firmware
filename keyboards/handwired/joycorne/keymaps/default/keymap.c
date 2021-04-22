@@ -15,6 +15,7 @@
  */
 #include QMK_KEYBOARD_H
 #include "keycodes.h"
+#include "print.h"
 
 #ifdef THUMBSTICK_ENABLE
 #    include "thumbstick.h"
@@ -95,6 +96,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         #ifdef THUMBSTICK_ENABLE
+            xprintf("Hey THUMBSTICK :)");
             case TMB_MODE:
                 if (record->event.pressed) {
                     thumbstick_mode_cycle(false);
@@ -112,5 +114,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //         }
 //     }
 // }
-
-void matrix_init_user(void) {}
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=true;
+  debug_matrix=true;
+  xprintf("Hi there :)");
+  debug_keyboard=true;
+  debug_mouse=true;
+}

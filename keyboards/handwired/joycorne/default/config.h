@@ -43,8 +43,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef THUMBSTICK_ENABLE
 #    define THUMBSTICK_FLIP_X
-#    define THUMBSTICK_PIN_X F4
-#    define THUMBSTICK_PIN_Y F5
-#    define THUMBSTICK_DEBUG
-#    define THUMBSTICK_MODE_MOUSE
+#    define THUMBSTICK_PIN_X F6
+#    define THUMBSTICK_PIN_Y F7
 #endif
