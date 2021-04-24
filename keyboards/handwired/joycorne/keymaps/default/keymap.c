@@ -16,9 +16,10 @@
 #include QMK_KEYBOARD_H
 #include "keycodes.h"
 #include "print.h"
+#include "thumbstick.h"
 
 #ifdef THUMBSTICK_ENABLE
-#    include "thumbstick.h"
+
 #endif
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
@@ -28,6 +29,7 @@ enum layer_names {
   _ADJUST
 
 };
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -89,36 +91,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        RESET,                   RESET,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS
 )
 };
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    print("..::DEBUG::..\n");
+    #ifdef THUMBSTICK_ENABLE
+        print(":) THUMBSTICK_ENABLED!\n");
+    #endif
+    #ifdef THUMBSTICK_DEBUG
+        print("THUMBSTICK_DEBUG!\n");
+    #endif
     switch (keycode) {
         #ifdef THUMBSTICK_ENABLE
-            xprintf("Hey THUMBSTICK :)");
             case TMB_MODE:
                 if (record->event.pressed) {
                     thumbstick_mode_cycle(false);
                 }
         #endif
     }
+    print("..::END_DEBUG::..\n");
     return true;
 }
 
-// void matrix_scan_user(void) {
+void matrix_scan_user(void) {
 //     if (tabbing) {
 //         if (timer_elapsed(tabtimer) > TABBING_TIMER) {
 //             unregister_code(KC_LALT);
 //             tabbing = false;
 //         }
 //     }
-// }
+        // dprint("..::matrix_scan_user::..");
+        // #ifdef THUMBSTICK_ENABLE
+        //     dprint("THUMBSTICK_ENABLE");
+        // #endif
+ }
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
+  print("keyboard_post_init_user ;)");
+  #ifdef THUMBSTICK_ENABLE
+    print("THUMBSTICK_ENABLE");
+  #endif
   debug_enable=true;
   debug_matrix=true;
-  xprintf("Hi there :)");
   debug_keyboard=true;
   debug_mouse=true;
 }

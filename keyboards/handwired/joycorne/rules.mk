@@ -10,7 +10,4 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 NKRO_ENABLE = yes           # USB Nkey Rollover
 # BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 SPLIT_KEYBOARD = yes		# Split keeb
-THUMBSTICK_ENABLE  = yes  # Enables analog thumbstick code
 RGBLIGHT_ENABLE    = no  # Enable keyboard RGB underglow
-
-DEFAULT_FOLDER = handwired/joycorne/default

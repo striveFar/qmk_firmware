@@ -1,4 +1,5 @@
 #include "thumbstick.h"
+#include "print.h"
 
 void thumbstick_init(void) {
     thumbstickTimer       = 0;
@@ -171,7 +172,7 @@ void pointing_device_task(void) {
 #ifdef THUMBSTICK_DEBUG
                 if (timer_elapsed(thumbstickLogTimer) > 100) {
                     thumbstickLogTimer = timer_read();
-                    uprintf("Up %d; Down %d; Left: %d; Right %d; Vec (%d, %d);\n", direction.up, direction.down, direction.left, direction.right, thumbstick_state.vector.x, thumbstick_state.vector.y);
+                    uprintf("Up %d; Down %d; Left: %d; Right %d; Vec (%d, %d);\n", thumbstick_state.lastDirection.up, thumbstick_state.lastDirection.down, thumbstick_state.lastDirection.left, thumbstick_state.lastDirection.right, thumbstick_state.vector.x, thumbstick_state.vector.y);
                 }
 #endif
                 break;

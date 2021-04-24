@@ -10,3 +10,11 @@ MCU = atmega32u4
 #   ATmega32A    bootloadHID
 #   ATmega328P   USBasp
 BOOTLOADER = caterina
+THUMBSTICK_ENABLE = yes  # Enables analog thumbstick code
+
+ifeq ($(strip $(THUMBSTICK_ENABLE)), yes)
+    POINTING_DEVICE_ENABLE = yes
+    OPT_DEFS += -DTHUMBSTICK_ENABLE
+	SRC += analog.c
+	SRC += thumbstick.c
+endif
