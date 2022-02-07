@@ -1,3 +1,6 @@
+# This is a Developmental Branch for NRF52
+> This branch will never be merged into the master branch due to conflicting open source licenses.     
+         
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
