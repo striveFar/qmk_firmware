@@ -695,3 +695,35 @@ ifneq (,$(filter $(MCU),attiny85))
   #     automatically to create a 32-bit value in your source code.
   F_CPU ?= 16500000
 endif
+
+
+ifneq ($(findstring NRF52840, $(MCU)),)
+  # Cortex version
+  MCU = cortex-m4
+
+  # ARM version, CORTEX-M0/M1 are 6, CORTEX-M3/M4/M7 are 7
+  ARMV = 7
+
+  ## chip/board settings
+  NRF52_FAMILY = NRF52840
+
+  # Linker script to use
+  ifeq ($(strip $(BOOTLOADER)), nrfuf2)
+    MCU_LDSCRIPT ?= NRF528XX_uf2
+    FIRMWARE_FORMAT ?= uf2
+  else
+    MCU_LDSCRIPT ?= NRF528XX
+  endif
+
+  # Startup code to use
+  MCU_STARTUP ?= nrf52840
+
+  # Board: it should exist either in <chibios>/os/hal/boards/,
+  # <keyboard_dir>/boards/, or drivers/boards/
+  BOARD ?= custom
+
+  USE_FPU ?= yes
+
+  # UF2 settings
+  UF2_FAMILY ?= NRF52
+endif
