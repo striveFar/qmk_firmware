@@ -278,6 +278,7 @@ static void render_anim(void) {
     };
 
     //assumes 1 frame prep stage
+    //函数内部，允许变量定义的地方就能定义内嵌函数
     void animation_phase(void) {
         if(get_current_wpm() <=IDLE_SPEED){
             current_idle_frame = (current_idle_frame + 1) % IDLE_FRAMES;
@@ -292,17 +293,21 @@ static void render_anim(void) {
              oled_write_raw_P(tap[abs((TAP_FRAMES-1)-current_tap_frame)], ANIM_SIZE);
          }
     }
+    //如果wpm不为零
     if(get_current_wpm() != 000) {
         oled_on(); // not essential but turns on animation OLED with any alpha keypress
+	//如果超出每一帧的持续时间，则解析并更新下一帧
         if(timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
             anim_timer = timer_read32();
             animation_phase();
-        }
+	}
         anim_sleep = timer_read32();
     } else {
+	//无输入状态下超出OLED_TIMEOUTms就息屏
         if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
             oled_off();
         } else {
+	    //尽管无输入，未超时就继续更新动画
             if(timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
                 anim_timer = timer_read32();
                 animation_phase();
@@ -318,12 +323,15 @@ static void render_anim(void) {
 //  }
 
 void oled_task_user(void) {
+	/* 左右分体检测，通过读取底层寄存器状态来判断USB是否建立连接，建立连接的是主机 */
     if (is_keyboard_master()) {
         //render_skull();
         //oled_set_cursor(7,6);
+	//主机显示当前键盘的状态(layer, lock, caps, scroll, etc)
         render_status();
      // Renders the current keyboard state (layer, lock, caps, scroll, etc)
     } else {
+	/* 从机显示动画 */
         render_anim();
         oled_set_cursor(0,6);
         sprintf(wpm_str, "       WPM: %03d", get_current_wpm());

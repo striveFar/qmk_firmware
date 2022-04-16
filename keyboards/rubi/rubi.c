@@ -27,6 +27,7 @@ const char keycode_to_ascii_lut[58] = {0, 0, 0, 0, 'a', 'b', 'c', 'd', 'e', 'f',
 uint8_t encoder_mode = ENC_MODE_VOLUME;
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+	/* only check KC_A ~ KC_CAPSLOCK */
     if (keycode < 58 && keycode != KC_TAB) {
         if (record->event.pressed) {
             calcInput(keycode_to_ascii_lut[(uint8_t)keycode]);
