@@ -1,0 +1,1 @@
+PLATFORM_SRC = ble.c

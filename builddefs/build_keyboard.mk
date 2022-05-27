@@ -265,8 +265,9 @@ ifdef MCU_FAMILY
     FIRMWARE_FORMAT?=bin
     OPT_DEFS += -DMCU_$(MCU_FAMILY)
 else ifdef NRF52_FAMILY
+# nrf52 port biu
     PLATFORM=NRF_SDK
-    PLATFORM_KEY=nrf_sdk
+    PLATFORM_KEY=nrf52
     FIRMWARE_FORMAT?=hex
 	OPT_DEFS += -DMCU_$(NRF52_FAMILY)
 else ifdef ARM_ATSAM

@@ -773,23 +773,25 @@ ifneq (,$(filter $(MCU),attiny85))
   F_CPU ?= 16500000
 endif
 
-
+# nrf52 port biu
 ifneq ($(findstring NRF52840, $(MCU)),)
-  # Cortex version
-  MCU = cortex-m4
-
   # ARM version, CORTEX-M0/M1 are 6, CORTEX-M3/M4/M7 are 7
   ARMV = 7
 
   ## chip/board settings
+  # - the next two should match the directories in
+  #   <chibios>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
+  MCU_FAMILY = NRF52
+  MCU_SERIES = NRF528XX
+#   ## chip/board settings
   NRF52_FAMILY = NRF52840
 
   # Linker script to use
   ifeq ($(strip $(BOOTLOADER)), nrfuf2)
-    MCU_LDSCRIPT ?= NRF528XX_uf2
+    MCU_LDSCRIPT ?= NRF52840_uf2
     FIRMWARE_FORMAT ?= uf2
   else
-    MCU_LDSCRIPT ?= NRF528XX
+    MCU_LDSCRIPT ?= NRF52840
   endif
 
   # Startup code to use
@@ -797,7 +799,7 @@ ifneq ($(findstring NRF52840, $(MCU)),)
 
   # Board: it should exist either in <chibios>/os/hal/boards/,
   # <keyboard_dir>/boards/, or drivers/boards/
-  BOARD ?= custom
+  BOARD ?= NRF52840_CUSTOM
 
   USE_FPU ?= yes
 

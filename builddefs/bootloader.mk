@@ -194,6 +194,11 @@ ifeq ($(strip $(BOOTLOADER)), tinyuf2)
     OPT_DEFS += -DBOOTLOADER_TINYUF2
     BOOTLOADER_TYPE = tinyuf2
 endif
+# nrf52 port biu
+ifeq ($(strip $(BOOTLOADER)), nrfuf2)
+    OPT_DEFS += -DBOOTLOADER_NRFUF2
+    BOOTLOADER_TYPE = nrfuf2
+endif
 ifeq ($(strip $(BOOTLOADER)), halfkay)
     OPT_DEFS += -DBOOTLOADER_HALFKAY
     BOOTLOADER_TYPE = halfkay
