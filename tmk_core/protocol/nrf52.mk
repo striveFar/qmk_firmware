@@ -1,7 +1,6 @@
 PROTOCOL_DIR = protocol
 NRF52_DIR = $(PROTOCOL_DIR)/nrf52
 
-
 SRC += $(NRF52_DIR)/nrf52.c
 
 VPATH += $(TMK_PATH)/$(PROTOCOL_DIR)
