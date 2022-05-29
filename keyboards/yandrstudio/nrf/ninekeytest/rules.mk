@@ -7,7 +7,3 @@ BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
 # CONSOLE_ENABLE = no         # Console for debug
 # EXTRAKEY_ENABLE = yes        # Audio control and System control
 NKRO_ENABLE = no           # Enable N-Key Rollover
-# OLED_DRIVER = SSD1306
-OLED_ENABLE = no
-RGBLIGHT_ENABLE = no       # Enable keyboard RGB underglow
-BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
