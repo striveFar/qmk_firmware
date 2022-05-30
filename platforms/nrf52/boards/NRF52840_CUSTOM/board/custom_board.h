@@ -1,7 +1,5 @@
 #pragma once
 
-#include_next "board.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
