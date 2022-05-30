@@ -1,5 +1,5 @@
 # MCU name
-MCU = nrf52840
+MCU = NRF52840
 
 # Bootloader selection
 BOOTLOADER = nrf52uf2
