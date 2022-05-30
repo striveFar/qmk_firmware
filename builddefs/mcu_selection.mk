@@ -852,11 +852,6 @@ ifneq ($(findstring NRF52840, $(MCU)),)
   # ARM version, CORTEX-M0/M1 are 6, CORTEX-M3/M4/M7 are 7
   ARMV = 7
 
-  ## chip/board settings
-  # - the next two should match the directories in
-  #   <chibios>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
-  MCU_FAMILY = NRF52
-  MCU_SERIES = NRF528XX
 #   ## chip/board settings
   NRF52_FAMILY = NRF52840
 

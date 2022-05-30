@@ -1,5 +1,6 @@
-#ifndef CUSTOM_BOARD_H
-#define CUSTOM_BOARD_H
+#pragma once
+
+#include_next "board.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,4 +15,3 @@ extern "C" {
 }
 #endif
 
-#endif // CUSTOM_BARD_H
