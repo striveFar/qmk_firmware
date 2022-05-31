@@ -105,8 +105,6 @@ PLATFORM_SRC += \
   $(SDK_ROOT)/modules/nrfx/drivers/src/prs/nrfx_prs.c \
   $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_uart.c \
   $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_uarte.c \
-  $(SDK_ROOT)/components/libraries/bsp/bsp.c \
-  $(SDK_ROOT)/components/libraries/bsp/bsp_btn_ble.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_Syscalls_GCC.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_printf.c \
@@ -136,8 +134,8 @@ PLATFORM_SRC += \
   $(SDK_ROOT)/components/ble/ble_services/ble_hids/ble_hids.c \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh.c \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh_ble.c \
-  $(SDK_ROOT)/components/softdevice/common/nrf_sdh_soc.c \
-  $(SDK_ROOT)/components/drivers_nrf/nrf_soc_nosd/nrf_nvic.c
+  $(SDK_ROOT)/components/softdevice/common/nrf_sdh_soc.c
+#   $(SDK_ROOT)/components/drivers_nrf/nrf_soc_nosd/nrf_nvic.c
 
 
 # Include folders common to all targets
@@ -279,31 +277,29 @@ EXTRAINCDIRS += \
 
 
 # # C flags common to all targets
-# CFLAGS += $(OPT)
-# CFLAGS += -DAPP_TIMER_V2
-# CFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
-# CFLAGS += -DBOARD_PCA10056
-# CFLAGS += -DCONFIG_GPIO_AS_PINRESET
-# CFLAGS += -DFLOAT_ABI_HARD
-# CFLAGS += -DNRF52840_XXAA //ok
-# CFLAGS += -DNRF_SD_BLE_API_VERSION=7
-# CFLAGS += -DS140
-# CFLAGS += -DSOFTDEVICE_PRESENT
-# CFLAGS += -mcpu=cortex-m4
-# CFLAGS += -mthumb -mabi=aapcs
-# CFLAGS += -Wall -Werror
-# CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+CFLAGS += -DAPP_TIMER_V2
+CFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
+CFLAGS += -DBOARD_CUSTOM
+CFLAGS += -DCONFIG_GPIO_AS_PINRESET
+CFLAGS += -DFLOAT_ABI_HARD
+CFLAGS += -DNRF52840_XXAA
+CFLAGS += -DNRF_SD_BLE_API_VERSION=7
+CFLAGS += -DS140
+CFLAGS += -DSOFTDEVICE_PRESENT
+CFLAGS += -mcpu=cortex-m4
+CFLAGS += -mthumb -mabi=aapcs
+CFLAGS += -Wall -Werror
+CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 # # keep every function in a separate section, this allows linker to discard unused ones
-# CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
-# CFLAGS += -fno-builtin -fshort-enums
+CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
+CFLAGS += -fno-builtin -fshort-enums
 
-OPT_DEFS += -DNRF52840_XXAA \
+OPT_DEFS += -DNRF52840_XXAA
 
 
 
 
 # C++ flags common to all targets
-# CXXFLAGS += $(OPT)
 # Assembler flags common to all targets
 # ASMFLAGS += -g3
 # ASMFLAGS += -DAPP_TIMER_V2

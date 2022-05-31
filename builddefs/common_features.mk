@@ -222,7 +222,7 @@ else
         COMMON_VPATH += $(DRIVER_PATH)/eeprom
         SRC += eeprom_driver.c
         SRC += $(PLATFORM_COMMON_DIR)/eeprom_nrf52.c
-        SRC += $(PLATFORM_COMMON_DIR)/flash_nrf52.c
+        SRC += $(PLATFORM_COMMON_DIR)/fds_nrf52.c
     else ifeq ($(PLATFORM),TEST)
       # Test harness "EEPROM"
       OPT_DEFS += -DEEPROM_TEST_HARNESS

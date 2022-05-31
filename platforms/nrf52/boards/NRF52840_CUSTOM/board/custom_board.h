@@ -9,6 +9,7 @@ extern "C" {
 #define BUTTONS_NUMBER 0
 #define LEDS_NUMBER 0
 
+
 #ifdef __cplusplus
 }
 #endif

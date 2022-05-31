@@ -23,7 +23,7 @@
 #include "util.h"
 #include "debug.h"
 #include "eeprom_stm32.h"
-#include "flash_stm32.h"
+#include "fds_stm32.h"
 
 /*
  * We emulate eeprom by writing a snapshot compacted view of eeprom contents,

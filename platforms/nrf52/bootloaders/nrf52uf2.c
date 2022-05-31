@@ -1,16 +1,20 @@
 #include "bootloader.h"
 #include <stdint.h>
 #include "nrf_nvic.h"
+#include "nrf_soc.h"
 
 // From tinyuf2's board_api.h
 #define DBL_TAP_MAGIC 0xF01669EF
 
 // defined by linker script
-extern uint32_t _board_dfu_dbl_tap[];
-#define DBL_TAP_REG _board_dfu_dbl_tap[0]
+#define DBL_TAP_REG 0
+
+__attribute__((weak)) void mcu_reset(void) {
+    sd_nvic_SystemReset();
+}
 
 __attribute__((weak)) void bootloader_jump(void) {
-    DBL_TAP_REG = DBL_TAP_MAGIC;
+    sd_power_gpregret_set(DBL_TAP_REG, DBL_TAP_MAGIC);
     sd_nvic_SystemReset();
 }
 
