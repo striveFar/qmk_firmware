@@ -1,5 +1,3 @@
 #include "platform_deps.h"
 
-void platform_setup(void) {
-
-}
+void platform_setup(void) {}

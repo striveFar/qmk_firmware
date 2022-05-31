@@ -1,4 +1,6 @@
 #include "bootloader.h"
+#include <stdint.h>
+#include "nrf_nvic.h"
 
 // From tinyuf2's board_api.h
 #define DBL_TAP_MAGIC 0xF01669EF
@@ -9,7 +11,7 @@ extern uint32_t _board_dfu_dbl_tap[];
 
 __attribute__((weak)) void bootloader_jump(void) {
     DBL_TAP_REG = DBL_TAP_MAGIC;
-    NVIC_SystemReset();
+    sd_nvic_SystemReset();
 }
 
 /* not needed, no two-stage reset */

@@ -65,6 +65,9 @@ void     eeprom_update_block(const void *__src, void *__dst, size_t __n);
 #        include "eeprom_stm32_tests.h"
 #        define TOTAL_EEPROM_BYTE_COUNT (EEPROM_SIZE)
 #    endif
+#elif defined(EEPROM_NRF52_FLASH_EMULATED)
+#    include "eeprom_nrf52_defs.h"
+#    define TOTAL_EEPROM_BYTE_COUNT (FEE_DENSITY_BYTES)
 #else
 #    error Unknown EEPROM driver.
 #endif

@@ -216,6 +216,13 @@ else
       # arm_atsam EEPROM
       OPT_DEFS += -DEEPROM_SAMD
       SRC += $(PLATFORM_COMMON_DIR)/eeprom_samd.c
+	else ifeq ($(PLATFORM), NRF_SDK)
+        # Emulated EEPROM BY FDS
+        OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_NRF52_FLASH_EMULATED
+        COMMON_VPATH += $(DRIVER_PATH)/eeprom
+        SRC += eeprom_driver.c
+        SRC += $(PLATFORM_COMMON_DIR)/eeprom_nrf52.c
+        SRC += $(PLATFORM_COMMON_DIR)/flash_nrf52.c
     else ifeq ($(PLATFORM),TEST)
       # Test harness "EEPROM"
       OPT_DEFS += -DEEPROM_TEST_HARNESS

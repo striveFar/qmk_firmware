@@ -22,7 +22,9 @@ endef
 flash: $(BUILD_DIR)/$(TARGET).bin cpfirmware sizeafter
 ifneq ($(strip $(PROGRAM_CMD)),)
 	$(UNSYNC_OUTPUT_CMD) && $(PROGRAM_CMD)
-else ifeq ($(strip $(BOOTLOADER)),nrfjprog)
+else ifeq ($(strip $(BOOTLOADER)),nrf52-null)
+	$(UNSYNC_OUTPUT_CMD) && $(call EXEC_NRFJPROG)
+else ifeq ($(strip $(BOOTLOADER)),nrf52-ota)
 	$(UNSYNC_OUTPUT_CMD) && $(call EXEC_NRFJPROG)
 else ifeq ($(strip $(BOOTLOADER)),nrf52uf2)
 	$(UNSYNC_OUTPUT_CMD) && $(call EXEC_UF2_UTIL_DEPLOY)

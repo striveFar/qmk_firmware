@@ -137,6 +137,7 @@ PLATFORM_SRC += \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh.c \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh_ble.c \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh_soc.c \
+  $(SDK_ROOT)/components/drivers_nrf/nrf_soc_nosd/nrf_nvic.c
 
 
 # Include folders common to all targets
@@ -271,6 +272,7 @@ EXTRAINCDIRS += \
   $(SDK_ROOT)/components/nfc/ndef/conn_hand_parser/ac_rec_parser \
   $(SDK_ROOT)/components/libraries/stack_guard \
   $(SDK_ROOT)/components/libraries/log/src \
+  $(SDK_ROOT)/components/drivers_nrf/nrf_soc_nosd
 
 # # Libraries common to all targets
 # LIB_FILES += \
@@ -295,7 +297,8 @@ EXTRAINCDIRS += \
 # CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
 # CFLAGS += -fno-builtin -fshort-enums
 
-OPT_DEFS += -DNRF52840_XXAA
+OPT_DEFS += -DNRF52840_XXAA \
+
 
 
 
@@ -303,9 +306,6 @@ OPT_DEFS += -DNRF52840_XXAA
 # CXXFLAGS += $(OPT)
 # Assembler flags common to all targets
 # ASMFLAGS += -g3
-# ASMFLAGS += -mcpu=cortex-m4
-# ASMFLAGS += -mthumb -mabi=aapcs
-# ASMFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 # ASMFLAGS += -DAPP_TIMER_V2
 # ASMFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
 # ASMFLAGS += -DBOARD_PCA10056
@@ -316,20 +316,18 @@ OPT_DEFS += -DNRF52840_XXAA
 # ASMFLAGS += -DS140
 # ASMFLAGS += -DSOFTDEVICE_PRESENT
 
-# Linker flags
-# LDFLAGS += $(OPT)
-# LDFLAGS += -mthumb -mabi=aapcs -L$(SDK_ROOT)/modules/nrfx/mdk -T$(LDFLAGS)
-# LDFLAGS += -mcpu=cortex-m4
-# LDFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
-# # let linker dump unused sections
-# LDFLAGS += -Wl,--gc-sections
-# # use newlib in nano version
-# LDFLAGS += --specs=nano.specs
+MCUFLAGS = -mcpu=cortex-m4 \
+		   -mthumb -mabi=aapcs \
+		   -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
+# Linker flags
+LDFLAGS += $(MCUFLAGS)
+# LDFLAGS += -mthumb -mabi=aapcs -L$(SDK_ROOT)/modules/nrfx/mdk -T$(LDFLAGS)
+# # let linker dump unused sections
+LDFLAGS += -Wl,--gc-sections
+# # use newlib in nano version
+LDFLAGS += --specs=nano.specs
 
 # Add standard libraries at the very end of the linker input, after all objects
 # that may need symbols provided by these libraries.
 # LIB_FILES += -lc -lnosys -lm
-
-
-# include $(TEMPLATE_PATH)/Makefile.common

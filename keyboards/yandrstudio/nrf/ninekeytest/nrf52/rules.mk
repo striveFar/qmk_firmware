@@ -3,7 +3,8 @@ MCU = NRF52840
 
 # Bootloader selection
 BOOTLOADER = nrf52uf2
-# BOOTLOADER = nrfjprog
+# BOOTLOADER = nrf52-null
+# BOOTLOADER = nrf52-ota
 
 # MCU LD INFO
 MCU_LDSCRIPT = nrf52840
