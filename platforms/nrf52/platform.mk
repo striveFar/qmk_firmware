@@ -1,10 +1,15 @@
-NRFSDK_ROOT ?= ../$(TOP_DIR)/nRF5_SDK_17.1.0
-PLATFORM_SRC =
+NRFSDK_ROOT ?= ../$(TOP_DIR)/nRF5_SDK_17.1.0_ddde560
+SDK_ROOT := $(NRFSDK_ROOT)
+
+# Imported source files and paths
+ifeq ($(wildcard $(SDK_ROOT)), "")
+  $(error no nrf NRFSDK was found. Please set NRFNRFSDK_ROOT in your rules.mk)
+endif
 
 OPT_DEFS += -DPROTOCOL_NRF52
 
 # Construct GCC toolchain
-CC      = $(CC_PREFIX) arm-none-eabi-gcc
+CC = $(CC_PREFIX) arm-none-eabi-gcc
 
 #
 # Linker script selection.
@@ -54,19 +59,8 @@ else
     LDSCRIPT = $(STARTUPLD)/$(MCU_LDSCRIPT).ld
 endif
 
-
-PROJECT_NAME     := ble_app_hids_keyboard_pca10056_s140
-TARGETS          := nrf52840_xxaa
-OUTPUT_DIRECTORY := _build
-
-SDK_ROOT := ../../../../../..
-PROJ_DIR := ../../..
-
-$(OUTPUT_DIRECTORY)/nrf52840_xxaa.out: \
-  LINKER_SCRIPT  := ble_app_hids_keyboard_gcc_nrf52.ld
-
 # Source files common to all targets
-SRC_FILES += \
+PLATFORM_SRC += \
   $(SDK_ROOT)/modules/nrfx/mdk/gcc_startup_nrf52840.S \
   $(SDK_ROOT)/components/libraries/log/src/nrf_log_backend_rtt.c \
   $(SDK_ROOT)/components/libraries/log/src/nrf_log_backend_serial.c \
@@ -113,7 +107,6 @@ SRC_FILES += \
   $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_uarte.c \
   $(SDK_ROOT)/components/libraries/bsp/bsp.c \
   $(SDK_ROOT)/components/libraries/bsp/bsp_btn_ble.c \
-  $(PROJ_DIR)/main.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_Syscalls_GCC.c \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_printf.c \
@@ -145,8 +138,9 @@ SRC_FILES += \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh_ble.c \
   $(SDK_ROOT)/components/softdevice/common/nrf_sdh_soc.c \
 
+
 # Include folders common to all targets
-INC_FOLDERS += \
+EXTRAINCDIRS += \
   $(SDK_ROOT)/components/nfc/ndef/generic/message \
   $(SDK_ROOT)/components/nfc/t2t_lib \
   $(SDK_ROOT)/components/nfc/t4t_parser/hl_detection_procedure \
@@ -215,7 +209,6 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/libraries/crc16 \
   $(SDK_ROOT)/components/nfc/t4t_parser/apdu \
   $(SDK_ROOT)/components/libraries/util \
-  ../config \
   $(SDK_ROOT)/components/libraries/usbd/class/cdc \
   $(SDK_ROOT)/components/libraries/csense \
   $(SDK_ROOT)/components/libraries/balloc \
@@ -279,108 +272,64 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/libraries/stack_guard \
   $(SDK_ROOT)/components/libraries/log/src \
 
-# Libraries common to all targets
-LIB_FILES += \
+# # Libraries common to all targets
+# LIB_FILES += \
 
-# Optimization flags
-OPT = -O3 -g3
-# Uncomment the line below to enable link time optimization
-#OPT += -flto
 
-# C flags common to all targets
-CFLAGS += $(OPT)
-CFLAGS += -DAPP_TIMER_V2
-CFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
-CFLAGS += -DBOARD_PCA10056
-CFLAGS += -DCONFIG_GPIO_AS_PINRESET
-CFLAGS += -DFLOAT_ABI_HARD
-CFLAGS += -DNRF52840_XXAA
-CFLAGS += -DNRF_SD_BLE_API_VERSION=7
-CFLAGS += -DS140
-CFLAGS += -DSOFTDEVICE_PRESENT
-CFLAGS += -mcpu=cortex-m4
-CFLAGS += -mthumb -mabi=aapcs
-CFLAGS += -Wall -Werror
-CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
-# keep every function in a separate section, this allows linker to discard unused ones
-CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
-CFLAGS += -fno-builtin -fshort-enums
+# # C flags common to all targets
+# CFLAGS += $(OPT)
+# CFLAGS += -DAPP_TIMER_V2
+# CFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
+# CFLAGS += -DBOARD_PCA10056
+# CFLAGS += -DCONFIG_GPIO_AS_PINRESET
+# CFLAGS += -DFLOAT_ABI_HARD
+# CFLAGS += -DNRF52840_XXAA //ok
+# CFLAGS += -DNRF_SD_BLE_API_VERSION=7
+# CFLAGS += -DS140
+# CFLAGS += -DSOFTDEVICE_PRESENT
+# CFLAGS += -mcpu=cortex-m4
+# CFLAGS += -mthumb -mabi=aapcs
+# CFLAGS += -Wall -Werror
+# CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+# # keep every function in a separate section, this allows linker to discard unused ones
+# CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
+# CFLAGS += -fno-builtin -fshort-enums
+
+OPT_DEFS += -DNRF52840_XXAA
+
+
 
 # C++ flags common to all targets
-CXXFLAGS += $(OPT)
+# CXXFLAGS += $(OPT)
 # Assembler flags common to all targets
-ASMFLAGS += -g3
-ASMFLAGS += -mcpu=cortex-m4
-ASMFLAGS += -mthumb -mabi=aapcs
-ASMFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
-ASMFLAGS += -DAPP_TIMER_V2
-ASMFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
-ASMFLAGS += -DBOARD_PCA10056
-ASMFLAGS += -DCONFIG_GPIO_AS_PINRESET
-ASMFLAGS += -DFLOAT_ABI_HARD
-ASMFLAGS += -DNRF52840_XXAA
-ASMFLAGS += -DNRF_SD_BLE_API_VERSION=7
-ASMFLAGS += -DS140
-ASMFLAGS += -DSOFTDEVICE_PRESENT
+# ASMFLAGS += -g3
+# ASMFLAGS += -mcpu=cortex-m4
+# ASMFLAGS += -mthumb -mabi=aapcs
+# ASMFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+# ASMFLAGS += -DAPP_TIMER_V2
+# ASMFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
+# ASMFLAGS += -DBOARD_PCA10056
+# ASMFLAGS += -DCONFIG_GPIO_AS_PINRESET
+# ASMFLAGS += -DFLOAT_ABI_HARD
+# ASMFLAGS += -DNRF52840_XXAA
+# ASMFLAGS += -DNRF_SD_BLE_API_VERSION=7
+# ASMFLAGS += -DS140
+# ASMFLAGS += -DSOFTDEVICE_PRESENT
 
 # Linker flags
-LDFLAGS += $(OPT)
-LDFLAGS += -mthumb -mabi=aapcs -L$(SDK_ROOT)/modules/nrfx/mdk -T$(LINKER_SCRIPT)
-LDFLAGS += -mcpu=cortex-m4
-LDFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
-# let linker dump unused sections
-LDFLAGS += -Wl,--gc-sections
-# use newlib in nano version
-LDFLAGS += --specs=nano.specs
+# LDFLAGS += $(OPT)
+# LDFLAGS += -mthumb -mabi=aapcs -L$(SDK_ROOT)/modules/nrfx/mdk -T$(LDFLAGS)
+# LDFLAGS += -mcpu=cortex-m4
+# LDFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+# # let linker dump unused sections
+# LDFLAGS += -Wl,--gc-sections
+# # use newlib in nano version
+# LDFLAGS += --specs=nano.specs
 
-nrf52840_xxaa: CFLAGS += -D__HEAP_SIZE=8192
-nrf52840_xxaa: CFLAGS += -D__STACK_SIZE=8192
-nrf52840_xxaa: ASMFLAGS += -D__HEAP_SIZE=8192
-nrf52840_xxaa: ASMFLAGS += -D__STACK_SIZE=8192
 
 # Add standard libraries at the very end of the linker input, after all objects
 # that may need symbols provided by these libraries.
-LIB_FILES += -lc -lnosys -lm
+# LIB_FILES += -lc -lnosys -lm
 
 
-.PHONY: default help
-
-# Default target - first one defined
-default: nrf52840_xxaa
-
-# Print all targets that can be built
-help:
-	@echo following targets are available:
-	@echo		nrf52840_xxaa
-	@echo		flash_softdevice
-	@echo		sdk_config - starting external tool for editing sdk_config.h
-	@echo		flash      - flashing binary
-
-TEMPLATE_PATH := $(SDK_ROOT)/components/toolchain/gcc
-
-
-include $(TEMPLATE_PATH)/Makefile.common
-
-$(foreach target, $(TARGETS), $(call define_target, $(target)))
-
-.PHONY: flash flash_softdevice erase
-
-# Flash the program
-flash: default
-	@echo Flashing: $(OUTPUT_DIRECTORY)/nrf52840_xxaa.hex
-	nrfjprog -f nrf52 --program $(OUTPUT_DIRECTORY)/nrf52840_xxaa.hex --sectorerase
-	nrfjprog -f nrf52 --reset
-
-# Flash softdevice
-flash_softdevice:
-	@echo Flashing: s140_nrf52_7.2.0_softdevice.hex
-	nrfjprog -f nrf52 --program $(SDK_ROOT)/components/softdevice/s140/hex/s140_nrf52_7.2.0_softdevice.hex --sectorerase
-	nrfjprog -f nrf52 --reset
-
-erase:
-	nrfjprog -f nrf52 --eraseall
-
-SDK_CONFIG_FILE := ../config/sdk_config.h
-CMSIS_CONFIG_TOOL := $(SDK_ROOT)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard.jar
-sdk_config:
-	java -jar $(CMSIS_CONFIG_TOOL) $(SDK_CONFIG_FILE)
+# include $(TEMPLATE_PATH)/Makefile.common

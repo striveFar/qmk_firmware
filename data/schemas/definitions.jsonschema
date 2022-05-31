@@ -100,6 +100,10 @@
             },
             {
                 "type": "string",
+                "pattern": "^P\\d{1,2}_\\d{1,2}$"
+            },
+            {
+                "type": "string",
                 "pattern": "^LINE_PIN\\d{1,2}$"
             },
             {

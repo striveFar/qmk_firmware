@@ -873,5 +873,5 @@ ifneq ($(findstring NRF52840, $(MCU)),)
   USE_FPU ?= yes
 
   # UF2 settings
-  UF2_FAMILY ?= NRF52
+  UF2_FAMILY ?= NRF52840
 endif
