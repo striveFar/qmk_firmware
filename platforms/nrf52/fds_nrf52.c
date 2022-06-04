@@ -1,3 +1,4 @@
+#include "eeprom_nrf52_defs.h"
 #include "fds_nrf52.h"
 
 #include "nrf_pwr_mgmt.h"
@@ -11,7 +12,7 @@
 static volatile bool fds_ee_initialized = false;
 static volatile bool eeprom_dirty       = false;
 
-__ALIGN(4) static uint8_t eeprom_buf[(EECONFIG_SIZE + 3) & (~3)];  // pad to word size
+__ALIGN(4) static uint8_t eeprom_buf[(FEE_DENSITY_BYTES + 3) & (~3)];  // pad to word size
 
 static fds_record_t ee_record = {
     .file_id = FDS_EE_FILE_ID,
@@ -71,7 +72,7 @@ static void fds_evt_handler(fds_evt_t const *p_evt) {
     switch (p_evt->id) {
         case FDS_EVT_INIT:
             if (p_evt->result == NRF_SUCCESS) {
-                ee_fds_initialized = true;
+                fds_ee_initialized = true;
                 NRF_LOG_INFO("FDS initialized.");
             } else {
                 NRF_LOG_INFO("Failed to initialized FDS, code: %d", p_evt->result);
@@ -101,7 +102,7 @@ static void fds_evt_handler(fds_evt_t const *p_evt) {
     }
 }
 
-void fds_init(void) {
+void fds_eeprom_init(void) {
     if (!fds_ee_initialized) {
         ret_code_t err_code;
         NRF_LOG_INFO("Initializing fds...");
@@ -109,7 +110,7 @@ void fds_init(void) {
         fds_register(fds_evt_handler);
         err_code = fds_init();
         APP_ERROR_CHECK(err_code);
-        while (!ee_fds_initialized) {
+        while (!fds_ee_initialized) {
             idle_state_handle();
         }
     }
@@ -119,7 +120,6 @@ void fds_init(void) {
 
 void fds_eeprom_write_byte(uint16_t addr, uint8_t data)
 {
-    ret_code_t err_code;
     if (eeprom_buf[addr] == data) return;
 
     eeprom_buf[addr] = data;
@@ -128,3 +128,9 @@ void fds_eeprom_write_byte(uint16_t addr, uint8_t data)
 }
 
 uint8_t fds_eeprom_read_byte(uint16_t addr) { return eeprom_buf[addr]; }
+
+void fds_eeprom_clear(void) {
+    memset(eeprom_buf, 0, sizeof(eeprom_buf));
+    eeprom_dirty = true;
+    fds_eeprom_buffer_update();
+}
