@@ -856,7 +856,7 @@ ifneq ($(findstring NRF52840, $(MCU)),)
   NRF52_FAMILY = NRF52840
 
   # Linker script to use
-  ifeq ($(strip $(BOOTLOADER)), nrfuf2)
+  ifeq ($(strip $(BOOTLOADER)), nrf52uf2)
     MCU_LDSCRIPT ?= NRF52840_uf2
     FIRMWARE_FORMAT ?= uf2
   else

@@ -9,7 +9,7 @@ endif
 OPT_DEFS += -DPROTOCOL_NRF52
 
 # Construct GCC toolchain
-CC = $(CC_PREFIX) arm-none-eabi-gcc
+CC = $(CC_PREFIX) /usr/local/Cellar/arm-gcc-bin@9/9-2020-q2-update_1/bin/arm-none-eabi-gcc
 
 #
 # Linker script selection.
@@ -316,8 +316,10 @@ MCUFLAGS = -mcpu=cortex-m4 \
 		   -mthumb -mabi=aapcs \
 		   -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
+SHARED_LDFLAGS = -L$(SDK_ROOT)/modules/nrfx/mdk -T $(LDSCRIPT)
+
 # Linker flags
-LDFLAGS += $(MCUFLAGS)
+LDFLAGS += $(MCUFLAGS) $(SHARED_LDFLAGS)
 # LDFLAGS += -mthumb -mabi=aapcs -L$(SDK_ROOT)/modules/nrfx/mdk -T$(LDFLAGS)
 # # let linker dump unused sections
 LDFLAGS += -Wl,--gc-sections
