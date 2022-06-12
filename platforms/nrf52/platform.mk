@@ -7,6 +7,7 @@ ifeq ($(wildcard $(SDK_ROOT)), "")
 endif
 
 OPT_DEFS += -DPROTOCOL_NRF52
+OPT_DEFS += -DNRF52840_XXAA
 
 # Construct GCC toolchain
 TOOLCHAIN = arm-none-eabi-
@@ -140,7 +141,7 @@ PLATFORM_SRC += \
   $(SDK_ROOT)/modules/nrfx/soc/nrfx_atomic.c \
   $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_clock.c \
   $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_gpiote.c \
-  $(SDK_ROOT)/modules/nrfx/drivers/src/prs/nrfx_prs.c \
+  $(SDK_ROOT)/modules/nrfx/drivers/src/prs/nrfx_prs.c
 
 
 
@@ -244,20 +245,25 @@ EXTRAINCDIRS += \
   $(SDK_ROOT)/modules/nrfx/mdk \
   $(SDK_ROOT)/modules/nrfx/drivers/include
 
-# # Libraries common to all targets
-# LIB_FILES += \
 
+# nrf52 sdk config
+NRF_APP_DEF += -DAPP_TIMER_V2
+NRF_APP_DEF += -DAPP_TIMER_V2_RTC1_ENABLED
+NRF_APP_DEF += -DBOARD_CUSTOM
+NRF_APP_DEF += -DCONFIG_NFCT_PINS_AS_GPIOS
+NRF_APP_DEF += -DCONFIG_GPIO_AS_PINRESET
+NRF_APP_DEF += -DFLOAT_ABI_HARD
+NRF_APP_DEF += -DINITIALIZE_USER_SECTIONS
+NRF_APP_DEF += -DNO_VTOR_CONFIG
+NRF_APP_DEF += -DNRF52840_XXAA
+NRF_APP_DEF += -DNRF_SD_BLE_API_VERSION=7
+NRF_APP_DEF += -DS140
+NRF_APP_DEF += -DSOFTDEVICE_PRESENT
 
 # # C flags common to all targets
-CFLAGS += -DAPP_TIMER_V2
-CFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
-CFLAGS += -DBOARD_CUSTOM
-CFLAGS += -DCONFIG_GPIO_AS_PINRESET
-CFLAGS += -DFLOAT_ABI_HARD
-CFLAGS += -DNRF52840_XXAA
-CFLAGS += -DNRF_SD_BLE_API_VERSION=7
-CFLAGS += -DS140
-CFLAGS += -DSOFTDEVICE_PRESENT
+CFLAGS += $(NRF_APP_DEF)
+CFLAGS += -D__HEAP_SIZE=8192
+CFLAGS += -D__STACK_SIZE=8192
 CFLAGS += -mcpu=cortex-m4
 CFLAGS += -mthumb -mabi=aapcs
 CFLAGS += -Wall -Werror
@@ -266,13 +272,9 @@ CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
 CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
 CFLAGS += -fno-builtin -fshort-enums
 
-OPT_DEFS += -DNRF52840_XXAA
-
-
 
 # C++ flags common to all targets
 # Assembler flags common to all targets
-ASFLAGS += -g3
 ASFLAGS += -DAPP_TIMER_V2
 ASFLAGS += -DAPP_TIMER_V2_RTC1_ENABLED
 ASFLAGS += -DBOARD_PCA10056
@@ -283,17 +285,21 @@ ASFLAGS += -DNRF_SD_BLE_API_VERSION=7
 ASFLAGS += -DS140
 ASFLAGS += -DSOFTDEVICE_PRESENT
 
-MCUFLAGS = -mcpu=cortex-m4 \
-		   -mthumb -mabi=aapcs \
-		   -mfloat-abi=hard -mfpu=fpv4-sp-d16
-
-SHARED_LDFLAGS = -L$(SDK_ROOT)/modules/nrfx/mdk -T $(LDSCRIPT)
+ASFLAGS += -g3
+ASFLAGS += -mcpu=cortex-m4
+ASFLAGS += -mthumb -mabi=aapcs
+ASFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+ASFLAGS += -D__HEAP_SIZE=8192
+ASFLAGS += -D__STACK_SIZE=8192
 
 # Linker flags
-LDFLAGS += $(MCUFLAGS) $(SHARED_LDFLAGS)
-# # let linker dump unused sections
+LDFLAGS += -O3 -g3
+LDFLAGS += -mthumb -mabi=aapcs -L$(SDK_ROOT)/modules/nrfx/mdk -T$(LDSCRIPT)
+LDFLAGS += -mcpu=cortex-m4
+LDFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+# let linker dump unused sections
 LDFLAGS += -Wl,--gc-sections
-# # use newlib in nano version
+# use newlib in nano version
 LDFLAGS += --specs=nano.specs
 # Add standard libraries at the very end of the linker input, after all objects
 # that may need symbols provided by these libraries.

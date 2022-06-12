@@ -6323,7 +6323,7 @@
 // <e> APP_USBD_ENABLED - app_usbd - USB Device library
 //==========================================================
 #ifndef APP_USBD_ENABLED
-#define APP_USBD_ENABLED 0
+#define APP_USBD_ENABLED 1
 #endif
 // <o> APP_USBD_VID - Vendor ID.  <0x0000-0xFFFF>
 
@@ -6332,7 +6332,7 @@
 // <i> Vendor ID ordered from USB IF: http://www.usb.org/developers/vendor/
 
 #ifndef APP_USBD_VID
-#define APP_USBD_VID 0
+#define APP_USBD_VID VENDOR_ID
 #endif
 
 // <o> APP_USBD_PID - Product ID.  <0x0000-0xFFFF>
@@ -6342,7 +6342,7 @@
 // <i> Selected Product ID
 
 #ifndef APP_USBD_PID
-#define APP_USBD_PID 0
+#define APP_USBD_PID PRODUCT_ID
 #endif
 
 // <o> APP_USBD_DEVICE_VER_MAJOR - Major device version  <0-99>

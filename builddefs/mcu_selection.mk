@@ -849,8 +849,6 @@ endif
 
 # nrf52 port biu
 ifneq ($(findstring NRF52840, $(MCU)),)
-  # ARM version, CORTEX-M0/M1 are 6, CORTEX-M3/M4/M7 are 7
-  ARMV = 7
 
 #   ## chip/board settings
   NRF52_FAMILY = NRF52840
