@@ -1,6 +1,8 @@
 #include "nrf52_keyboard_port.h"
 #include "outputselect.h"
 #include "nrf52_usbd.h"
+#include "nrf52_ble.h"
+#include "nrf52_2g4.h"
 
 /* declarations */
 uint8_t keyboard_leds(void) {
