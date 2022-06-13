@@ -5,6 +5,7 @@ SRC += $(NRF52_DIR)/nrf52.c
 
 VPATH += $(TMK_PATH)/$(PROTOCOL_DIR)
 VPATH += $(TMK_PATH)/$(NRF52_DIR)/lufa_utils
+VPATH += $(TMK_PATH)/$(NRF52_DIR)/keyboard_hosts
 
 # OPT_DEFS +=
 

@@ -1,6 +1,12 @@
 #include "nrf52.h"
+#include "nrf52_keyboard_port.h"
 
 #include "keyboard.h"
+
+/* host struct */
+host_driver_t nrf52_driver = {keyboard_leds, send_keyboard, send_mouse, send_system, send_consumer, send_programmable_button};
+static host_driver_t *driver = NULL;
+
 
 void platform_setup(void);
 
@@ -27,7 +33,7 @@ void protocol_pre_init(void) {
 
 }
 void protocol_post_init(void) {
-
+    host_set_driver(driver);
 }
 
 void protocol_pre_task(void) {
