@@ -1,4 +1,5 @@
 #pragma once
+#include "report.h"
 
 /* declarations */
 uint8_t keyboard_leds(void);
@@ -8,3 +9,5 @@ void    send_system(uint16_t data);
 void    send_consumer(uint16_t data);
 void    send_programmable_button(uint32_t data);
 void    send_digitizer(report_digitizer_t *report);
+
+void    nrf52_keyboard_port_init(void);

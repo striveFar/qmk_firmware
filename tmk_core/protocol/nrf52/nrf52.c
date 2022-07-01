@@ -1,12 +1,13 @@
 #include "nrf52.h"
 #include "nrf52_keyboard_port.h"
 
+#include "host_driver.h"
+#include "host.h"
 #include "keyboard.h"
 
 /* host struct */
-host_driver_t nrf52_driver = {keyboard_leds, send_keyboard, send_mouse, send_system, send_consumer, send_programmable_button};
-static host_driver_t *driver = NULL;
-
+host_driver_t         nrf52_driver = {keyboard_leds, send_keyboard, send_mouse, send_system, send_consumer, send_programmable_button};
+static host_driver_t *driver       = NULL;
 
 void platform_setup(void);
 
@@ -18,19 +19,16 @@ void protocol_post_task(void);
 void protocol_init(void);
 void protocol_task(void);
 
-
-
-
 void protocol_setup(void) {
- // Initialize.
-  timers_init();
-  log_init();
-  power_management_init();
-  scheduler_init();
+    // Initialize.
+    timers_init();
+    log_init();
+    power_management_init();
+    scheduler_init();
 }
 
 void protocol_pre_init(void) {
-
+    nrf52_keyboard_port_init();
 }
 void protocol_post_init(void) {
     host_set_driver(driver);
@@ -41,19 +39,18 @@ void protocol_pre_task(void) {
     // nrf_usb_task();
 }
 void protocol_post_task(void) {
-    #ifdef CONSOLE_ENABLE
-        console_task();
-    #endif
-    #ifdef MIDI_ENABLE
-        midi_ep_task();
-    #endif
-    #ifdef VIRTSER_ENABLE
-        virtser_task();
-    #endif
-    #ifdef RAW_ENABLE
-        raw_hid_task();
-    #endif
-
+#ifdef CONSOLE_ENABLE
+    console_task();
+#endif
+#ifdef MIDI_ENABLE
+    midi_ep_task();
+#endif
+#ifdef VIRTSER_ENABLE
+    virtser_task();
+#endif
+#ifdef RAW_ENABLE
+    raw_hid_task();
+#endif
 }
 
 int main(void) {
@@ -78,30 +75,29 @@ int main(void) {
     }
 }
 
-
 /*generic function*/
 void log_init(void) {
-  ret_code_t err_code = NRF_LOG_INIT(NULL);
-  APP_ERROR_CHECK(err_code);
+    ret_code_t err_code = NRF_LOG_INIT(NULL);
+    APP_ERROR_CHECK(err_code);
 
-  NRF_LOG_DEFAULT_BACKENDS_INIT();
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
 }
 void power_management_init(void) {
-  ret_code_t err_code;
-  err_code = nrf_pwr_mgmt_init();
-  APP_ERROR_CHECK(err_code);
+    ret_code_t err_code;
+    err_code = nrf_pwr_mgmt_init();
+    APP_ERROR_CHECK(err_code);
 }
 void idle_state_handle(void) {
-  app_sched_execute();
-  if (NRF_LOG_PROCESS() == false) {
-    nrf_pwr_mgmt_run();
-  }
+    app_sched_execute();
+    if (NRF_LOG_PROCESS() == false) {
+        nrf_pwr_mgmt_run();
+    }
 }
 void timers_init(void) {
-  ret_code_t err_code;
-  err_code = app_timer_init();
-  APP_ERROR_CHECK(err_code);
+    ret_code_t err_code;
+    err_code = app_timer_init();
+    APP_ERROR_CHECK(err_code);
 }
 void scheduler_init(void) {
-  APP_SCHED_INIT(SCHED_MAX_EVENT_DATA_SIZE, SCHED_QUEUE_SIZE);
+    APP_SCHED_INIT(SCHED_MAX_EVENT_DATA_SIZE, SCHED_QUEUE_SIZE);
 }

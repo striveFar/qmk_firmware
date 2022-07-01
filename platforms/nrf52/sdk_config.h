@@ -2560,7 +2560,7 @@
 // <e> NRFX_POWER_ENABLED - nrfx_power - POWER peripheral driver
 //==========================================================
 #ifndef NRFX_POWER_ENABLED
-#define NRFX_POWER_ENABLED 0
+#define NRFX_POWER_ENABLED 1
 #endif
 // <o> NRFX_POWER_CONFIG_IRQ_PRIORITY  - Interrupt priority
 
@@ -4681,7 +4681,7 @@
 // <e> NRFX_USBD_ENABLED - nrfx_usbd - USBD peripheral driver
 //==========================================================
 #ifndef NRFX_USBD_ENABLED
-#define NRFX_USBD_ENABLED 0
+#define NRFX_USBD_ENABLED 1
 #endif
 // <o> NRFX_USBD_CONFIG_IRQ_PRIORITY  - Interrupt priority
 
@@ -4941,7 +4941,7 @@
 // <e> POWER_ENABLED - nrf_drv_power - POWER peripheral driver - legacy layer
 //==========================================================
 #ifndef POWER_ENABLED
-#define POWER_ENABLED 0
+#define POWER_ENABLED 1
 #endif
 // <o> POWER_CONFIG_IRQ_PRIORITY  - Interrupt priority
 
@@ -6023,7 +6023,7 @@
 // <e> USBD_ENABLED - nrf_drv_usbd - Software Component
 //==========================================================
 #ifndef USBD_ENABLED
-#define USBD_ENABLED 0
+#define USBD_ENABLED 1
 #endif
 // <o> USBD_CONFIG_IRQ_PRIORITY  - Interrupt priority
 

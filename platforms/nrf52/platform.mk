@@ -102,6 +102,13 @@ PLATFORM_SRC += \
   $(SDK_ROOT)/components/libraries/sortlist/nrf_sortlist.c \
   $(SDK_ROOT)/components/libraries/strerror/nrf_strerror.c \
   $(SDK_ROOT)/components/libraries/sensorsim/sensorsim.c \
+  $(SDK_ROOT)/components/libraries/usbd/app_usbd.c \
+  $(SDK_ROOT)/components/libraries/usbd/app_usbd_core.c \
+  $(SDK_ROOT)/components/libraries/usbd/class/hid/app_usbd_hid.c \
+  $(SDK_ROOT)/components/libraries/usbd/class/hid/generic/app_usbd_hid_generic.c \
+  $(SDK_ROOT)/components/libraries/usbd/class/cdc/acm/app_usbd_cdc_acm.c \
+  $(SDK_ROOT)/components/libraries/usbd/app_usbd_string_desc.c \
+  $(SDK_ROOT)/components/libraries/usbd/class/dummy/app_usbd_dummy.c \
   $(SDK_ROOT)/components/boards/boards.c \
   $(SDK_ROOT)/components/ble/peer_manager/auth_status_tracker.c \
   $(SDK_ROOT)/components/ble/common/ble_advdata.c \
@@ -136,12 +143,14 @@ PLATFORM_SRC += \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_printf.c \
   $(SDK_ROOT)/external/utf_converter/utf.c \
   $(SDK_ROOT)/integration/nrfx/legacy/nrf_drv_clock.c \
+  $(SDK_ROOT)/integration/nrfx/legacy/nrf_drv_power.c \
   $(SDK_ROOT)/modules/nrfx/mdk/system_nrf52840.c \
   $(SDK_ROOT)/modules/nrfx/mdk/gcc_startup_nrf52840.S \
   $(SDK_ROOT)/modules/nrfx/soc/nrfx_atomic.c \
   $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_clock.c \
   $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_gpiote.c \
-  $(SDK_ROOT)/modules/nrfx/drivers/src/prs/nrfx_prs.c
+  $(SDK_ROOT)/modules/nrfx/drivers/src/prs/nrfx_prs.c \
+  $(SDK_ROOT)/modules/nrfx/drivers/src/nrfx_usbd.c
 
 
 
@@ -244,6 +253,7 @@ EXTRAINCDIRS += \
   $(SDK_ROOT)/modules/nrfx \
   $(SDK_ROOT)/modules/nrfx/mdk \
   $(SDK_ROOT)/modules/nrfx/drivers/include
+
 
 
 # nrf52 sdk config
