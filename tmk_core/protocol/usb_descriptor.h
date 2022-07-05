@@ -291,6 +291,8 @@ enum usb_endpoints {
 #elif defined(PROTOCOL_CHIBIOS)
 // ChibiOS gives us number of available user endpoints, not control
 #    define MAX_ENDPOINTS USB_MAX_ENDPOINTS
+#elif defined(PROTOCOL_NRF52)
+#    define MAX_ENDPOINTS (NRF_USBD_EPIN_CNT-2)
 #endif
 
 // TODO - ARM_ATSAM
