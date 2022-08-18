@@ -24,6 +24,8 @@ extern keymap_config_t keymap_config;
 static void nrf52_usbd_hid_kbd_ev_handler(app_usbd_class_inst_t const * p_inst,
                                 app_usbd_hid_user_event_t event);
 
+static uint8_t keyboard_led_state = 0;
+
 /*
  * Handles the GET_DESCRIPTOR callback
  *
@@ -45,7 +47,7 @@ static void nrf52_usbd_hid_kbd_ev_handler(app_usbd_class_inst_t const * p_inst,
 /**
  * @brief Global HID keyboard instance
  */
-APP_USBD_HID_KBD_GLOBAL_DEF(m_app_hid_kbd,
+APP_USBD_HID_KBD_GLOBAL_DEF(m_app_usbd_hid_kbd,
                             KEYBOARD_INTERFACE,
                             NRFX_USBD_EPIN1,
                             nrf52_usbd_hid_kbd_ev_handler,
@@ -59,6 +61,17 @@ static void nrf52_usbd_hid_kbd_ev_handler(app_usbd_class_inst_t const * p_inst,
     switch (event) {
     case APP_USBD_HID_USER_EVT_OUT_REPORT_READY: {
         NRF_LOG_INFO("USBD HID OUT report ready");
+        app_usbd_class_inst_t const * kbd = app_usbd_hid_generic_class_inst_get(&m_app_usbd_hid_kbd);
+        if (p_inst == kbd) {
+            size_t size = 0;
+            const void* data = app_usbd_hid_generic_out_report_get(&m_app_usbd_hid_kbd, &size);
+            NRF_LOG_INFO("USBD out report size=%d", size);
+            if (size == 2) {
+                uint8_t* pd = (uint8_t*)data;
+                NRF_LOG_INFO("USBD out report byte[0]=%d, byte[1]=%d", pd[0], pd[1]);
+                keyboard_led_state = pd[1];
+            }
+        }
     } break;
     case APP_USBD_HID_USER_EVT_IN_REPORT_DONE: {
     } break;
@@ -123,4 +136,9 @@ void nrf52_usbd_init(void) {
     };
     ret = app_usbd_init(&usbd_config);
     APP_ERROR_CHECK(ret);
+}
+
+
+uint8_t nrf52_usbd_keyboard_leds(void) {
+    return keyboard_led_state;
 }

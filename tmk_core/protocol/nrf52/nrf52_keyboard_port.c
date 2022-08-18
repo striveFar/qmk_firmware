@@ -4,6 +4,7 @@
 #include "nrf52_ble.h"
 #include "nrf52_2g4.h"
 
+
 /* declarations */
 uint8_t keyboard_leds(void) {
 
@@ -18,7 +19,7 @@ void send_keyboard(report_keyboard_t *report) {
 #endif /* NKRO_ENABLE */
     {
         if (where_to_send() == OUTPUT_USB) {
-            // nrf_usb_send_report(report);
+            // nrf52_usbd_send_keyboard(report);
         } else if (where_to_send() == OUTPUT_BLUETOOTH) {
 
         } else if (where_to_send() == OUTPUT_2G4) {
