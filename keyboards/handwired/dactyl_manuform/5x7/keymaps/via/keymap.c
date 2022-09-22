@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-
+#include "thumbstick.h"
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -15,6 +15,9 @@
 #define TAB_R   LCTL(KC_TAB)
 #define TAB_L   LCTL(LSFT(KC_TAB))
 #define TAB_RO  LCTL(LSFT(KC_T))
+
+// TODO
+#define JOY_MODE KC_FN0
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -47,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_MSTP,   KC_MPLY,   KC_MPRV,   KC_MNXT,
                                _______, _______,
                                _______, _______,
-                               _______, _______,
+                               _______, JOY_MODE,
         // right hand
                      KC_F7,     KC_F8,     KC_F9,     KC_F10,    KC_F11,    KC_F12,    _______,
                      _______,   _______,   _______,   _______,   _______,   _______,   _______,
@@ -121,3 +124,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 };
+
+enum fn_functions {
+    JOY_CONTROL,
+};
+
+enum fn_keyboard_control {
+    JOY_CONTROL_MODE
+};
+
+const uint16_t fn_actions[] = {
+    ACTION_FUNCTION_OPT(JOY_CONTROL, JOY_CONTROL_MODE),
+};
+
+/* Function */
+void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
+
+    if (record->event.pressed) {
+        switch (id) {
+        case JOY_CONTROL:
+            switch (opt) {
+            case JOY_CONTROL_MODE:
+		thumbstick_mode_cycle(false);
+                break;
+            default:
+                break;
+            }
+
+        default:
+            break;
+        }
+    }
+}
