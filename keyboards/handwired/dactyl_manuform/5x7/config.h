@@ -26,11 +26,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* key matrix size */
 // Rows are doubled-up
-#define MATRIX_ROWS 12
+#define MATRIX_ROWS 14
 #define MATRIX_COLS 7
 
 // wiring of each half
-#define MATRIX_ROW_PINS { D4, C6, D7, E6, B4, B5 }
+#define MATRIX_ROW_PINS { D3, D4, C6, D7, E6, B4, B5 }
 #define MATRIX_COL_PINS { F5, F6, F7, B1, B3, B2, B6 }
 
 #define DIODE_DIRECTION COL2ROW
@@ -38,3 +38,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // WS2812 RGB LED strip input and number of LEDs
 #define RGB_DI_PIN D3
 #define RGBLED_NUM 12
+
+#ifdef THUMBSTICK_ENABLE
+    #define THUMBSTICK_POSITION 0
+    #define THUMBSTICK_FLIP_X
+    #define THUMBSTICK_PIN_X F0
+    //#define THUMBSTICK_FLIP_X
+    #define THUMBSTICK_PIN_Y F1
+
+    #define LEFT_JOY_POS_UP		3,6
+    #define LEFT_JOY_POS_DOWN		4,6
+    #define LEFT_JOY_POS_LEFT		5,0
+    #define LEFT_JOY_POS_RIGHT		5,1
+
+    #define RIGHT_JOY_POS_UP		10,0
+    #define RIGHT_JOY_POS_DOWN		11,0
+    #define RIGHT_JOY_POS_LEFT		12,5
+    #define RIGHT_JOY_POS_RIGHT		12,6
+
+#endif
