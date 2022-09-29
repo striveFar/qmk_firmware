@@ -156,3 +156,27 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
         }
     }
 }
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+            if (index == 0) {
+                if (clockwise) {
+		    if (isLeftHand) {
+                        tap_code(dynamic_keymap_get_keycode(biton32(layer_state), LEFT_ENCODER_POS_C));
+		    } else {
+                        tap_code(dynamic_keymap_get_keycode(biton32(layer_state), RIGHT_ENCODER_POS_C));
+		    }
+
+                } else {
+		    if (isLeftHand) {
+                        tap_code(dynamic_keymap_get_keycode(biton32(layer_state), LEFT_ENCODER_POS_CC));
+		    } else {
+                        tap_code(dynamic_keymap_get_keycode(biton32(layer_state), RIGHT_ENCODER_POS_CC));
+		    }
+                }
+            }
+    return true;
+}
+
+bool encoder_update_kb(uint8_t index, bool clockwise) {
+    return encoder_update_user(index, clockwise);
+}

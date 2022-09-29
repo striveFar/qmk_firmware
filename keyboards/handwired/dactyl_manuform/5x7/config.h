@@ -57,3 +57,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RIGHT_JOY_POS_RIGHT		12,6
 
 #endif
+
+#ifdef ENCODER_ENABLE
+    #define ENCODERS_PAD_A { C7 }
+    #define ENCODERS_PAD_B { D6 }
+    //#define ENCODER_DIRECTION_FLIP
+    #define ENCODER_RESOLUTION 2
+
+    #define LEFT_ENCODER_POS_C		6,0
+    #define RIGHT_ENCODER_POS_C		6,1
+
+    #define LEFT_ENCODER_POS_CC		13,0
+    #define RIGHT_ENCODER_POS_CC	13,1
+
+#endif
