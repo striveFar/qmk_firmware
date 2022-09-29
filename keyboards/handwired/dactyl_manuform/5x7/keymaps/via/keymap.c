@@ -16,12 +16,11 @@
 #define TAB_L   LCTL(LSFT(KC_TAB))
 #define TAB_RO  LCTL(LSFT(KC_T))
 
-// TODO
 #define JOY_MODE KC_FN0
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-[_QWERTY] = LAYOUT_5x7(
+[_QWERTY] = LAYOUT_7x7(
   // left hand
    KC_ESC,    KC_1,    KC_2,    KC_3,   KC_4,   KC_5,   KC_6,
    KC_TAB,    KC_Q,    KC_W,    KC_E,   KC_R,   KC_T,   KC_LBRC,
@@ -41,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_1, KC_5, KC_2,	KC_PGUP, KC_PGDN,
          KC_4,	        KC_LCTL, KC_LALT),
 
-[_FN] = LAYOUT_5x7(
+[_FN] = LAYOUT_7x7(
   // left hand
    _______,   KC_F1,     KC_F2,      KC_F3,    KC_F4,     KC_F5,    KC_F6,
    _______,   _______,   _______,    KC_UP,    _______,   _______,  _______,
@@ -61,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_1, KC_5, KC_2,	        _______, _______,
           KC_4,		        _______, _______),
 
-[_NUMPAD] = LAYOUT_5x7(
+[_NUMPAD] = LAYOUT_7x7(
   // left hand
    _______,   _______,   _______,   _______,   _______,   _______,  _______,
    _______,   _______,   _______,   _______,   _______,   _______,  _______,
@@ -82,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	      KC_4,			        _______, _______),
 
 
-[_NUMPAD] = LAYOUT_5x7(
+[_NUMPAD] = LAYOUT_7x7(
   // left hand
    _______,   _______,   _______,   _______,   _______,   _______,  _______,
    _______,   _______,   _______,   _______,   _______,   _______,  _______,
@@ -102,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_1, KC_5, KC_2,			        _______, _______,
 	      KC_4,				        _______, _______),
 
-[_BLANK] = LAYOUT_5x7(
+[_BLANK] = LAYOUT_7x7(
   // left hand
    _______,   _______,   _______,   _______,   _______,   _______,  _______,
    _______,   _______,   _______,   _______,   _______,   _______,  _______,
