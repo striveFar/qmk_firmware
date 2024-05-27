@@ -25,7 +25,9 @@ typedef enum {
 #define THUMBSTICK_SCROLL_TIMEOUT 200  // Mouse scroll throttling time in ms
 #define THUMBSTICK_RANGE_START 0
 #define THUMBSTICK_RANGE_STOP 1023
+/* 轴线中心点 */
 #define THUMBSTICK_RANGE_CENTER (THUMBSTICK_RANGE_STOP - THUMBSTICK_RANGE_START + 1) / 2
+/* 可移动范围 */
 #define THUMBSTICK_RANGE_MOVEMENT (THUMBSTICK_RANGE_CENTER - THUMBSTICK_DEAD_ZONE)
 
 #include "timer.h"

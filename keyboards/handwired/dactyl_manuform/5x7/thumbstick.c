@@ -46,6 +46,7 @@ void thumbstick_mode_set(thumbstick_mode_t mode) { thumbstick_state.config.mode 
 
 thumbstick_mode_t thumbstick_mode_get(void) { return thumbstick_state.config.mode; }
 
+/* 在mode列表中切换mode模式，reverse决定是否逆序切换 */
 void thumbstick_mode_cycle(bool reverse) {
     thumbstick_mode_t mode = thumbstick_mode_get();
     if (reverse) {
@@ -65,8 +66,15 @@ int16_t thumbstick_get_mouse_speed(int16_t component) {
     } else if (distance > THUMBSTICK_DEAD_ZONE) {
         maxSpeed = THUMBSTICK_FINE_SPEED;
     } else {
-        return 0;
+	    return 0;
     }
+    /* component 是遥杆当前的偏移量，取值范围为 [-THUMBSTICK_RANGE_CENTER, THUMBSTICK_RANGE_CENTER]。
+     * maxSpeed 是根据偏移量确定的最大速度。
+     * THUMBSTICK_RANGE_CENTER 是遥杆的中心点，通常是轴线的中点。
+     * 这个计算公式的核心思想是将 component 的偏移量按比例缩放到 maxSpeed 范围内，以确保最终的速度是一个合理的值
+     * 由于 component 可以是正数或负数，公式能够正确处理不同方向的输入
+     * 这种计算方法有效地将遥杆的物理偏移量转换为对应的鼠标速度，保证了输入设备的线性响应和用户体验的平滑性
+     * */
     return (float)maxSpeed * component / THUMBSTICK_RANGE_CENTER;
 }
 
@@ -77,6 +85,7 @@ thumbstick_direction_t thumbstick_get_discretized_direction(thumbstick_vector_t 
     uint16_t               absY                = abs(vector.y);
     uint16_t               maxComponent        = (absX > absY) ? absX : absY;
     bool                   insideDeadZone      = (maxComponent <= THUMBSTICK_DEAD_ZONE);
+    /* 判断当前摇杆位置是否贴近x或y轴 */
     bool                   outsideDiagonalZone = ((abs(absX - absY) / (float)maxComponent) >= axisSeparation);
     if (insideDeadZone) {
         direction.up = direction.down = direction.left = direction.right = false;
